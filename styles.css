@@ -7,14 +7,12 @@
 }
 .box img{
     width: 200px;
-    height: 190px;
-    padding-top:300px;
+    height: 200px;
+    padding-top:250px;
 }
 .box.box-text{
     width:430px;
-    position: absolute;
-    left:400px;
-    top:300px;
+    position: absolute 100px 100px;
 }
 .box-text p{
     font-family: Arial;
