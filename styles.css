@@ -1,20 +1,22 @@
 .box{
     display:flex;
     justify-content: space-between;
-    width:680px;
+    width:660px;
     margin:auto;
     background-color: red;
 }
 .box img{
     width: 200px;
     height: 190px;
+    padding-top:150px;
 }
 .box.box-text{
     width:430px;
+    padding-top:150px;
 }
 .box-text p{
     font-family: Arial;
     font-size: 28px;
     font-weight: bold;
-    line-height: 2;
+    line-height: 1.5;
 }
