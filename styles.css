@@ -3,7 +3,7 @@
     justify-content: space-between;
     width:660px;
     position: absolute;
-    left:200px;
+    left:150px;
     top:200px;
     background-color: red;
 }
@@ -18,5 +18,5 @@
     font-family: Arial;
     font-size: 28px;
     font-weight: bold;
-    line-height: 1.5;
+    line-height: 1;
 }
