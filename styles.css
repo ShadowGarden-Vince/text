@@ -1,5 +1,5 @@
 *{
-    margin:0;
+    margin-top:200px;
     padding:0;
 }
 .box{
@@ -8,8 +8,6 @@
     width:680px;
     margin:auto;
     background-color: red;
-    position: absolute;
-    top:200px;
 }
 .box img{
     width: 200px;
