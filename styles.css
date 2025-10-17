@@ -12,6 +12,8 @@
 .box img{
     width: 200px;
     height: 190px;
+    position: absolute;
+    top:200px;
 }
 .box.box-text{
     width:430px;
