@@ -8,11 +8,11 @@
 .box img{
     width: 200px;
     height: 190px;
-    padding-top:150px;
+    padding-top:400px;
 }
 .box.box-text{
     width:430px;
-    padding-top:150px;
+    padding-top:300px;
 }
 .box-text p{
     font-family: Arial;
