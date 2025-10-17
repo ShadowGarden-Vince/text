@@ -5,7 +5,7 @@
 .box{
     display:flex;
     justify-content: space-between;
-    width:760px;
+    width:660px;
     margin:auto;
     background-color: red;
 }
@@ -14,11 +14,11 @@
     height: 190px;
 }
 .box.box-text{
-    width:530px;
+    width:430px;
 }
 .box-text p{
     font-family: Arial;
     font-size: 30px;
     font-weight: bold;
-    line-height: 1.5;
+    line-height: 2;
 }
