@@ -5,18 +5,19 @@
 .box{
     display:flex;
     justify-content: space-between;
-    width:460px;
+    width:660px;
     margin:auto;
     background-color: red;
 }
 .box img{
     width: 200px;
+    height: 200px;
 }
 .box.box-text{
-    width:230px;
+    width:430px;
 }
 .box-text p{
     font-family: Arial;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: bold;
 }
