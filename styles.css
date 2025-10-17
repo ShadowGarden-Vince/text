@@ -5,14 +5,14 @@
 .box{
     display:flex;
     justify-content: space-between;
-    width:1280px;
+    width:1080px;
     margin:auto;
 }
 .box img{
     width: 400px;
 }
 .box.box-text{
-    width:830px;
+    width:630px;
 }
 .box-text p{
     font-family: Arial;
