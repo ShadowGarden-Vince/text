@@ -9,13 +9,13 @@
     margin:auto;
 }
 .box img{
-    width: 200px;
+    width: 400px;
 }
 .box.box-text{
     width:430px;
 }
 .box-text p{
     font-family: Arial;
-    font-size: 100px;
+    font-size: 50px;
     font-weight: bold;
 }
