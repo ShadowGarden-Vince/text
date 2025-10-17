@@ -1,4 +1,16 @@
-h1{
-    color:blue;
-    text-align:center;
+*{
+    margin:0;
+    padding:0;
+}
+.box{
+    display:flex;
+    justify-content: space-between;
+    width:1280px;
+    margin:auto;
+}
+.box img{
+    width: 600px;
+}
+.box.box-text{
+    width:650px;
 }
