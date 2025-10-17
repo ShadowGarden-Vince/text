@@ -1,13 +1,10 @@
-*{
-    margin-top:100px;
-    padding:0;
-}
 .box{
     display:flex;
     justify-content: space-between;
     width:680px;
     margin:auto;
     background-color: red;
+    margin-top:150px;
 }
 .box img{
     width: 200px;
