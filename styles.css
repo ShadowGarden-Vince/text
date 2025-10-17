@@ -13,4 +13,7 @@
 }
 .box.box-text{
     width:650px;
+    font-family: Arial;
+    font-size: 28px;
+    font-weight: bold;
 }
