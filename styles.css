@@ -2,13 +2,14 @@
     display:flex;
     justify-content: space-between;
     width:660px;
-    margin:auto;
+    position: absolute;
+    left:200px;
+    top:200px;
     background-color: red;
 }
 .box img{
     width: 200px;
     height: 200px;
-    padding-top:250px;
 }
 .box.box-text{
     width:430px;
@@ -18,5 +19,4 @@
     font-size: 28px;
     font-weight: bold;
     line-height: 1.5;
-    padding-top:200px;
 }
