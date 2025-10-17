@@ -12,11 +12,11 @@
 }
 .box.box-text{
     width:430px;
-    position: absolute 100px 100px;
 }
 .box-text p{
     font-family: Arial;
     font-size: 28px;
     font-weight: bold;
     line-height: 1.5;
+    padding-top:200px;
 }
