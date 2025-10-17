@@ -5,19 +5,20 @@
 .box{
     display:flex;
     justify-content: space-between;
-    width:860px;
+    width:760px;
     margin:auto;
     background-color: red;
 }
 .box img{
     width: 200px;
-    height: 150px;
+    height: 190px;
 }
 .box.box-text{
-    width:630px;
+    width:530px;
 }
 .box-text p{
     font-family: Arial;
     font-size: 30px;
     font-weight: bold;
+    line-height: 1.5;
 }
