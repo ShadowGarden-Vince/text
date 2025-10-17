@@ -5,17 +5,18 @@
 .box{
     display:flex;
     justify-content: space-between;
-    width:1080px;
+    width:460px;
     margin:auto;
+    background-color: red;
 }
 .box img{
-    width: 400px;
+    width: 200px;
 }
 .box.box-text{
-    width:630px;
+    width:230px;
 }
 .box-text p{
     font-family: Arial;
-    font-size: 10px;
+    font-size: 40px;
     font-weight: bold;
 }
