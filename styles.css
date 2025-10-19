@@ -1,74 +1,113 @@
-body{
+/* 基础样式：重置默认边距 */
+body {
     margin: 0;
     width: 100vw;
     height: 100vh;
     background: url('bg3.jpg') no-repeat;
     background-size: cover;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     position: relative;
-}
-.flexsb{
+    overflow-x: hidden; /* 防止横向滚动 */
+  }
+  
+  .flexsb {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.box{
-    width: 85%; /* 保持百分比（相对父元素） */
-    height: 85%; /* 保持百分比 */
+  }
+  
+  .box {
+    width: 85%;
+    height: 85%;
     background: linear-gradient(135deg,
-    rgba(87,194,255,0.5) 0%,
-    rgba(247,112,184,0.5) 50%,
-    rgba(140,114,235,0.5) 100%
+      rgba(87,194,255,0.5) 0%,
+      rgba(247,112,184,0.5) 50%,
+      rgba(140,114,235,0.5) 100%
     );
     background-size: 200% 200%;
     animation: shine 3s infinite linear;
-    border-radius: 1.2rem; /* 12px → 1.2rem */
+    /* 圆角：反向缩放（屏幕宽→圆角小，屏幕窄→圆角大），限制最大18px、最小8px */
+    border-radius: clamp(8px, calc(18px - 1vw), 18px);
     position: relative;
     overflow: hidden;
-    box-shadow: inset 0 0 1.5rem rgb(255,255,255); /* 15px → 1.5rem */
-}
-@keyframes shine{
-    0%{ background-position: 0% 0%; }
-    50%{ background-position: 100% 100%; }
-    100%{ background-position: 0% 0%; }
-}
-.container{
+    /* 内阴影：随屏幕反向缩放 */
+    box-shadow: inset 0 0 clamp(8px, calc(15px - 0.8vw), 15px) rgb(255,255,255);
+  }
+  
+  @keyframes shine {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+  
+  .container {
     position: absolute;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    padding: 0 3%; /* 保持百分比 */
+    padding: 0 3%;
     display: flex;
-    gap: 3%; /* 保持百分比 */
-}
-.container>div{
-    width: 40%; /* 保持百分比 */
+    gap: 3%;
+  }
+  
+  .container > div {
+    width: 40%;
     background: rgba(255,255,255,.2);
-    height: 80%; /* 保持百分比 */
-    border-radius: 2rem; /* 20px → 2rem */
+    height: 80%;
+    /* 子容器圆角：反向缩放 */
+    border-radius: clamp(12px, calc(20px - 1vw), 20px);
     box-sizing: border-box;
-    padding: 2rem; /* 20px → 2rem */
-    padding-top: 3rem; /* 30px → 3rem */
-    box-shadow: inset 0 0 1.5rem rgba(255,255,255,0.2); /* 15px → 1.5rem */
-}
-.tit{
+    /* 内边距：反向缩放 */
+    padding: clamp(12px, calc(20px - 0.8vw), 20px);
+    padding-top: clamp(18px, calc(30px - 1vw), 30px);
+    /* 子容器内阴影：反向缩放 */
+    box-shadow: inset 0 0 clamp(8px, calc(15px - 0.8vw), 15px) rgba(255,255,255,0.2);
+  }
+  
+  .tit {
     color: #fff;
-    font-size: 2.4rem; /* 24px → 2.4rem */
-    letter-spacing: 0.2rem; /* 2px → 0.2rem */
-    margin-bottom: 2.5rem; /* 25px → 2.5rem */
+    /* 标题文字：反向缩放（屏幕宽→文字小，屏幕窄→文字大），限制最大24px、最小16px */
+    font-size: clamp(16px, calc(24px - 1vw), 24px);
+    /* 字间距：反向缩放 */
+    letter-spacing: clamp(1px, calc(2px - 0.1vw), 2px);
+    /* 底部边距：反向缩放 */
+    margin-bottom: clamp(15px, calc(25px - 0.8vw), 25px);
     font-weight: bold;
-}
-.container>.left{
+  }
+  
+  .container > .left {
     height: auto;
-    min-height: 80%; /* 保持百分比 */
-}
-.left>img, .right>img{
-    width: 100%; /* 保持百分比（相对父元素） */
-    max-width: 20rem; /* 200px → 20rem */
+    min-height: 80%;
+  }
+  
+  /* 图片尺寸：反向缩放（屏幕宽→图片小，屏幕窄→图片大），限制最大200px、最小120px */
+  .left > img, .right > img {
+    width: 100%;
+    max-width: clamp(120px, calc(200px - 5vw), 200px); /* 5vw增强反向缩放幅度 */
     height: auto;
-}
-.container>.right{
-    width: 24%; /* 保持百分比 */
-}
+    display: block; /* 避免图片底部间隙 */
+    margin: 0 auto; /* 图片居中 */
+  }
+  
+  .container > .right {
+    width: 24%;
+  }
+  
+  /* 针对手机屏幕的额外适配（屏幕宽度≤768px） */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* 手机上子元素纵向排列 */
+      gap: 5%;
+      padding: 5% 3%;
+    }
+    .container > div, .container > .right {
+      width: 100%; /* 手机上子元素占满宽度 */
+      height: auto;
+      min-height: auto;
+    }
+    .left > img, .right > img {
+      max-width: clamp(150px, calc(180px - 3vw), 180px); /* 手机上图片稍大 */
+    }
+  }
