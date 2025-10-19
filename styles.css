@@ -135,7 +135,6 @@ h1:hover {
     position: relative;
 }
 
-/* 大框容器（关键：设置相对定位，用于容纳左下角元素） */
 .container {
     background-color: rgba(10, 5, 20, 0.9);
     border: 1px solid rgba(171, 71, 255, 0.3);
@@ -148,8 +147,8 @@ h1:hover {
     animation: slideUp 1s ease-out 1.2s forwards;
     opacity: 0;
     transform: translateY(30px);
-    position: relative; /* 允许子元素绝对定位 */
-    min-height: 600px; /* 确保有足够高度容纳粒子和台词 */
+    position: relative;
+    padding: 2rem;
 }
 
 @keyframes slideUp {
@@ -159,12 +158,20 @@ h1:hover {
 .flexsb {
     display: flex;
     gap: 3rem;
-    padding: 2rem;
 }
 
-/* 左侧个人资料区 */
-.left {
+/* 左侧容器（包含个人介绍+下方台词） */
+.left-container {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 水平居中，确保台词在个人介绍正下方 */
+    position: relative;
+}
+
+/* 个人介绍区域 */
+.left {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -194,6 +201,7 @@ h1:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .tit::after {
@@ -340,43 +348,43 @@ img:hover {
     transform: scale(1.05);
 }
 
-/* 大框左下角三语台词（核心样式） */
-.container-quote {
-    position: absolute;
-    bottom: 2rem; /* 距离大框底部 */
-    left: 1.5rem; /* 距离大框左侧 */
+/* 个人介绍正下方的三语竖向文字（核心样式） */
+.profile-bottom-quote {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem; /* 语言间间距 */
-    z-index: 2; /* 确保在内容下方，边框上方 */
+    align-items: center; /* 水平居中，确保在个人介绍正下方 */
+    gap: 0.5rem;
+    margin-top: 2rem; /* 与个人介绍区域保持距离 */
+    width: 100%;
+    z-index: 2;
 }
 
 /* 中文台词（最上方） */
 .quote-chinese {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #ba55d3;
-    opacity: 0.5;
-    text-shadow: 0 0 10px rgba(186, 85, 211, 0.6);
-    letter-spacing: 0.1em;
+    opacity: 0.6;
+    text-shadow: 0 0 12px rgba(186, 85, 211, 0.7);
+    letter-spacing: 0.15em;
     animation: quotePulse 4s infinite alternate;
 }
 
 /* 日文台词（中间） */
 .quote-japanese {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #c080ff;
-    opacity: 0.45;
-    text-shadow: 0 0 8px rgba(192, 128, 255, 0.5);
-    letter-spacing: 0.1em;
+    opacity: 0.55;
+    text-shadow: 0 0 10px rgba(192, 128, 255, 0.6);
+    letter-spacing: 0.15em;
     animation: quotePulse 4s 0.5s infinite alternate;
 }
 
 /* 英文台词（最下方） */
 .quote-english {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #d8bfd8;
-    opacity: 0.4;
-    text-shadow: 0 0 6px rgba(147, 112, 219, 0.4);
+    opacity: 0.5;
+    text-shadow: 0 0 8px rgba(147, 112, 219, 0.5);
     letter-spacing: 0.2em;
     animation: quotePulse 4s 1s infinite alternate;
 }
@@ -384,24 +392,25 @@ img:hover {
 /* 台词呼吸动画 */
 @keyframes quotePulse {
     from { 
-        opacity: 0.4;
-        text-shadow: 0 0 5px rgba(186, 85, 211, 0.3);
+        opacity: 0.5;
+        text-shadow: 0 0 8px rgba(186, 85, 211, 0.4);
     }
     to { 
-        opacity: 0.7;
-        text-shadow: 0 0 15px rgba(186, 85, 211, 0.8);
+        opacity: 0.8;
+        text-shadow: 0 0 18px rgba(186, 85, 211, 0.9);
     }
 }
 
-/* 大框左下角动态粒子 */
+/* 个人介绍正下方的动态粒子 */
 .magic-particles {
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 250px;
-    height: 300px;
+    left: 50%;
+    transform: translateX(-50%); /* 水平居中，与台词对齐 */
+    width: 200px;
+    height: 200px;
     pointer-events: none;
-    z-index: 1; /* 位于台词下方，内容下方 */
+    z-index: 1;
 }
 
 /* 粒子样式 */
@@ -411,74 +420,63 @@ img:hover {
     content: '';
     position: absolute;
     border-radius: 50%;
-    background: rgba(186, 85, 211, 0.3);
-    animation: floatUp 10s infinite linear;
+    background: rgba(186, 85, 211, 0.4);
+    animation: floatUp 8s infinite linear;
 }
 
 /* 粒子位置与动画参数 */
 .magic-particles::before {
-    width: 6px;
-    height: 6px;
-    bottom: 40px;
-    left: 20px;
+    width: 7px;
+    height: 7px;
+    bottom: 0;
+    left: 50%;
     animation-delay: 0s;
 }
 
 .magic-particles::after {
-    width: 4px;
-    height: 4px;
-    bottom: 100px;
-    left: 50px;
-    animation-delay: 2s;
-}
-
-.magic-particles span:nth-child(1) {
-    width: 8px;
-    height: 8px;
-    bottom: 70px;
-    left: 80px;
+    width: 5px;
+    height: 5px;
+    bottom: 30px;
+    left: 30%;
     animation-delay: 1s;
 }
 
+.magic-particles span:nth-child(1) {
+    width: 9px;
+    height: 9px;
+    bottom: 50px;
+    left: 70%;
+    animation-delay: 0.5s;
+}
+
 .magic-particles span:nth-child(2) {
-    width: 5px;
-    height: 5px;
-    bottom: 150px;
-    left: 30px;
-    animation-delay: 3s;
+    width: 4px;
+    height: 4px;
+    bottom: 80px;
+    left: 40%;
+    animation-delay: 1.5s;
 }
 
 .magic-particles span:nth-child(3) {
-    width: 3px;
-    height: 3px;
-    bottom: 200px;
-    left: 100px;
-    animation-delay: 4s;
+    width: 6px;
+    height: 6px;
+    bottom: 100px;
+    left: 60%;
+    animation-delay: 2s;
 }
 
-.magic-particles span:nth-child(4) {
-    width: 7px;
-    height: 7px;
-    bottom: 120px;
-    left: 120px;
-    animation-delay: 2.5s;
-}
-
-/* 粒子上升动画 */
+/* 粒子上升动画（向上扩散，匹配台词位置） */
 @keyframes floatUp {
     from { 
         transform: translate(0, 0) rotate(0deg); 
         opacity: 0;
     }
-    20% { 
-        opacity: 0.6;
-        box-shadow: 0 0 12px rgba(186, 85, 211, 0.7);
-    }
-    80% { 
-        opacity: 0.3;
+    30% { 
+        opacity: 0.7;
+        box-shadow: 0 0 15px rgba(186, 85, 211, 0.8);
     }
     to { 
-        transform: translate(60px, -300px) rotate(180deg); 
+        transform: translate(0, -150px) rotate(180deg); 
         opacity: 0;
     }
 }
@@ -507,19 +505,14 @@ img:hover {
 
     /* 响应式调整台词 */
     .quote-chinese {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
     
     .quote-japanese {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
     
     .quote-english {
-        font-size: 1rem;
-    }
-
-    .magic-particles {
-        width: 200px;
-        height: 250px;
+        font-size: 1.1rem;
     }
 }
