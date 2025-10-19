@@ -24,12 +24,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 保持比例填充屏幕 */
-    opacity: 0.25; /* 降低透明度避免干扰前景 */
-    filter: sepia(30%) hue-rotate(270deg); /* 调整色调匹配暗紫色主题 */
+    object-fit: cover;
+    opacity: 0.35; /* 适度提高透明度（从0.25→0.35），更清晰但不刺眼 */
+    filter: 
+        sepia(20%) /* 降低色调偏移，保留更多原始细节 */
+        hue-rotate(270deg) /* 维持暗紫色调 */
+        contrast(1.2) /* 提高对比度，让视频细节更清晰 */
+        brightness(0.8); /* 降低亮度，避免过曝 */
 }
 
-/* 半透明遮罩层 - 关键：隔离背景与内容，增强可读性 */
+/* 调整遮罩层透明度，减少对视频的遮挡 */
 body::before {
     content: '';
     position: fixed;
@@ -39,11 +43,11 @@ body::before {
     height: 100%;
     background: linear-gradient(
         to bottom,
-        rgba(10, 5, 20, 0.9),
-        rgba(10, 5, 20, 0.85),
-        rgba(10, 5, 20, 0.9)
+        rgba(10, 5, 20, 0.85), /* 降低顶部遮罩透明度 */
+        rgba(10, 5, 20, 0.8),  /* 中间更通透 */
+        rgba(10, 5, 20, 0.85)
     );
-    z-index: -1; /* 位于动态背景之上，内容之下 */
+    z-index: -1;
 }
 
 body {
