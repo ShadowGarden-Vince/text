@@ -2,7 +2,7 @@ body{
     margin: 0;
     width: 100vw;
     height: 100vh;
-    background: url('img/bg3.jpg') no-repeat;
+    background: url('text/bg3.jpg') no-repeat;
     background-size: 100% auto;
     display: flex;
     justify-content: center; 
