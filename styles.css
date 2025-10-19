@@ -291,8 +291,7 @@ img:hover {
 /* 优化个人介绍文本样式 */
 .left-text {
     line-height: 2;
-    font-size: 1.1rem;
-    /* 匹配日文的颜色和阴影效果 */
+    font-size: 1.4rem;
     color: #c080ff;
     text-shadow: 0 0 8px rgba(192, 128, 255, 0.5);
     background-color: rgba(30, 14, 55, 0.5);
@@ -307,7 +306,6 @@ img:hover {
 .left-text p {
     position: relative;
     padding-left: 1.5rem;
-    /* 添加与日文一致的呼吸动画 */
     animation: quotePulse 4s 0.5s infinite alternate, textReveal 0.5s ease-out forwards;
     opacity: 0;
 }
