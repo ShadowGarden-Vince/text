@@ -353,7 +353,7 @@ img:hover {
     display: flex;
     flex-direction: column;
     align-items: center; /* 水平居中，确保在个人介绍正下方 */
-    gap: 0.5rem;
+    gap: 1.5rem;
     margin-top: 4rem; /* 与个人介绍区域保持距离 */
     width: 100%;
     z-index: 2;
@@ -361,7 +361,7 @@ img:hover {
 
 /* 中文台词（最上方） */
 .quote-chinese {
-    font-size: 4rem;
+    font-size: 3.8rem;
     color: #ba55d3;
     opacity: 0.6;
     text-shadow: 0 0 12px rgba(186, 85, 211, 0.7);
@@ -371,7 +371,7 @@ img:hover {
 
 /* 日文台词（中间） */
 .quote-japanese {
-    font-size: 4rem;
+    font-size: 3.8rem;
     color: #c080ff;
     opacity: 0.55;
     text-shadow: 0 0 10px rgba(192, 128, 255, 0.6);
@@ -381,7 +381,7 @@ img:hover {
 
 /* 英文台词（最下方） */
 .quote-english {
-    font-size: 4rem;
+    font-size: 3.8rem;
     color: #d8bfd8;
     opacity: 0.5;
     text-shadow: 0 0 8px rgba(147, 112, 219, 0.5);
