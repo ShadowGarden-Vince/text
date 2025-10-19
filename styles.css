@@ -288,13 +288,16 @@ img:hover {
     border-color: rgba(186, 85, 211, 0.9);
 }
 
-/* 个人介绍文本样式 */
+/* 优化个人介绍文本样式 */
 .left-text {
-    line-height: 2;
-    font-size: 1.1rem;
-    color: #e6e6fa;
+    /* 更换为更有力量感的字体 */
+    font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+    line-height: 2.2;
+    font-size: 1.15rem;
+    font-weight: 500; /* 增加字重增强力度 */
+    color: #f0e6fa;
     background-color: rgba(30, 14, 55, 0.5);
-    padding: 1.5rem;
+    padding: 1.8rem;
     border-radius: 8px;
     width: 100%;
     border: 1px solid rgba(171, 71, 255, 0.2);
@@ -304,48 +307,83 @@ img:hover {
 
 .left-text p {
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 1.8rem;
     animation: textReveal 0.5s ease-out forwards;
     opacity: 0;
+    /* 文字边缘锐化 */
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
-.left-text p:nth-child(1) { animation-delay: 1.5s; }
-.left-text p:nth-child(2) { animation-delay: 1.6s; }
-.left-text p:nth-child(3) { animation-delay: 1.7s; }
-.left-text p:nth-child(4) { animation-delay: 1.8s; }
-.left-text p:nth-child(5) { animation-delay: 1.9s; }
-.left-text p:nth-child(6) { animation-delay: 2.0s; }
-
-@keyframes textReveal {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
+/* 个人介绍列表符号强化 */
 .left-text p::before {
-    content: '•';
+    content: '✦'; /* 更换为星形符号 */
     position: absolute;
     left: 0;
     color: #ba55d3;
-    text-shadow: 0 0 5px rgba(186, 85, 211, 0.7);
+    text-shadow: 0 0 8px rgba(186, 85, 211, 0.8);
+    font-size: 0.9rem;
 }
 
-/* 成员名字样式 */
+/* 优化成员名字样式 */
 .member-name {
+    font-family: 'Rajdhani', 'Segoe UI', sans-serif;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1.2rem;
     color: #d8bfd8;
-    font-weight: 500;
-    text-shadow: 0 0 5px rgba(147, 112, 219, 0.5);
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
     text-transform: uppercase;
+    letter-spacing: 0.25em; /* 增加字母间距 */
+    /* 立体阴影效果 */
+    text-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(147, 112, 219, 0.6);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
 }
 
+/* 成员名字悬停特效 */
 .member-item:hover .member-name {
     color: #ba55d3;
-    text-shadow: 0 0 10px rgba(186, 85, 211, 0.8);
-    transform: scale(1.05);
+    transform: scale(1.1) translateY(-3px);
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.6),
+        0 0 15px rgba(186, 85, 211, 0.9),
+        0 0 30px rgba(186, 85, 211, 0.5);
+}
+
+/* 为成员名字添加底部光效 */
+.member-name::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ba55d3, transparent);
+    transition: transform 0.4s ease;
+}
+
+.member-item:hover .member-name::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* 新增文字渐入动画细节 */
+@keyframes textReveal {
+    from { 
+        opacity: 0; 
+        transform: translateX(-10px); 
+        text-shadow: none;
+    }
+    50% {
+        text-shadow: 0 0 5px rgba(186, 85, 211, 0.5);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+        text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+    }
 }
 
 /* 个人介绍正下方的三语竖向文字（核心样式） */
