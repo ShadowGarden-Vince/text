@@ -290,14 +290,13 @@ img:hover {
 
 /* 优化个人介绍文本样式 */
 .left-text {
-    /* 更换为更有力量感的字体 */
-    font-family: 'Rajdhani', 'Segoe UI', sans-serif;
-    line-height: 2.2;
-    font-size: 1.15rem;
-    font-weight: 500; /* 增加字重增强力度 */
-    color: #f0e6fa;
+    line-height: 2;
+    font-size: 1.1rem;
+    /* 匹配日文的颜色和阴影效果 */
+    color: #c080ff;
+    text-shadow: 0 0 8px rgba(192, 128, 255, 0.5);
     background-color: rgba(30, 14, 55, 0.5);
-    padding: 1.8rem;
+    padding: 1.5rem;
     border-radius: 8px;
     width: 100%;
     border: 1px solid rgba(171, 71, 255, 0.2);
@@ -307,21 +306,19 @@ img:hover {
 
 .left-text p {
     position: relative;
-    padding-left: 1.8rem;
-    animation: textReveal 0.5s ease-out forwards;
+    padding-left: 1.5rem;
+    /* 添加与日文一致的呼吸动画 */
+    animation: quotePulse 4s 0.5s infinite alternate, textReveal 0.5s ease-out forwards;
     opacity: 0;
-    /* 文字边缘锐化 */
-    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
-/* 个人介绍列表符号强化 */
+/* 保持原列表符号但调整颜色匹配 */
 .left-text p::before {
-    content: '✦'; /* 更换为星形符号 */
+    content: '•';
     position: absolute;
     left: 0;
-    color: #ba55d3;
-    text-shadow: 0 0 8px rgba(186, 85, 211, 0.8);
-    font-size: 0.9rem;
+    color: #c080ff;
+    text-shadow: 0 0 8px rgba(192, 128, 255, 0.7);
 }
 
 /* 优化成员名字样式 */
