@@ -1,6 +1,3 @@
-*{
-    background-image: url(img/bg1.jpg);
-}
 .box{
     display:flex;
     justify-content: space-between;
