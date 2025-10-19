@@ -64,9 +64,17 @@ body{
     margin-bottom: 25px;
     font-weight: bold;
 }
+.container>.left{
+    height: auto;
+}
+.left>image{
+    width: 200px;
+    height: 200px;
+}
 .container>.right{
     width: 28%;
 }
-.container>.left{
-    height: auto;
+.right>image{
+    width: 200px;
+    height: 200px;
 }
