@@ -1,5 +1,5 @@
 /* 基础样式：重置默认边距 */
-body {
+body{
     margin: 0;
     width: 100vw;
     height: 100vh;
@@ -10,15 +10,14 @@ body {
     align-items: center;
     position: relative;
     overflow-x: hidden; /* 防止横向滚动 */
-  }
-  
-  .flexsb {
+}
+.flexsb{
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
   
-  .box {
+.box{
     width: 85%;
     height: 85%;
     background: linear-gradient(135deg,
@@ -34,15 +33,15 @@ body {
     overflow: hidden;
     /* 内阴影：随屏幕反向缩放 */
     box-shadow: inset 0 0 clamp(8px, calc(15px - 0.8vw), 15px) rgb(255,255,255);
-  }
+}
   
-  @keyframes shine {
+@keyframes shine{
     0% { background-position: 0% 0%; }
     50% { background-position: 100% 100%; }
     100% { background-position: 0% 0%; }
-  }
+}
   
-  .container {
+.container {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -50,9 +49,8 @@ body {
     padding: 0 3%;
     display: flex;
     gap: 3%;
-  }
-  
-  .container > div {
+}
+.container > div {
     width: 40%;
     background: rgba(255,255,255,.2);
     height: 80%;
@@ -64,9 +62,8 @@ body {
     padding-top: clamp(18px, calc(30px - 1vw), 30px);
     /* 子容器内阴影：反向缩放 */
     box-shadow: inset 0 0 clamp(8px, calc(15px - 0.8vw), 15px) rgba(255,255,255,0.2);
-  }
-  
-  .tit {
+}
+.tit{
     color: #fff;
     /* 标题文字：反向缩放（屏幕宽→文字小，屏幕窄→文字大），限制最大24px、最小16px */
     font-size: clamp(16px, calc(24px - 1vw), 24px);
@@ -75,28 +72,28 @@ body {
     /* 底部边距：反向缩放 */
     margin-bottom: clamp(15px, calc(25px - 0.8vw), 25px);
     font-weight: bold;
-  }
+}
   
-  .container > .left {
+.container > .left{
     height: auto;
     min-height: 80%;
-  }
+}
   
   /* 图片尺寸：反向缩放（屏幕宽→图片小，屏幕窄→图片大），限制最大200px、最小120px */
-  .left > img, .right > img {
+.left > img, .right > img {
     width: 100%;
     max-width: clamp(120px, calc(200px - 5vw), 200px); /* 5vw增强反向缩放幅度 */
     height: auto;
     display: block; /* 避免图片底部间隙 */
     margin: 0 auto; /* 图片居中 */
-  }
+}
   
-  .container > .right {
+.container > .right {
     width: 24%;
-  }
+}
   
   /* 针对手机屏幕的额外适配（屏幕宽度≤768px） */
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .container {
       flex-direction: column; /* 手机上子元素纵向排列 */
       gap: 5%;
@@ -110,4 +107,4 @@ body {
     .left > img, .right > img {
       max-width: clamp(150px, calc(180px - 3vw), 180px); /* 手机上图片稍大 */
     }
-  }
+}
