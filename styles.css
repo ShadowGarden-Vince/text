@@ -1,3 +1,14 @@
+body{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('bg3.jpg') no-repeat;
+    background-size: 100% auto;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+}
 .flexsb{
     display: flex;
     justify-content: space-between;
