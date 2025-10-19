@@ -1,16 +1,14 @@
-.box.left-box{
-    display:flex;
-    justify-content: space-between;
+.left{
     width:660px;
     position: absolute;
     left:500px;
     top:200px;
 }
-.left-box img{
+.left img{
     width: 200px;
     height: 200px;
 }
-.left-box.left-text{
+.left .left-text{
     width:430px;
 }
 .left-text p{
