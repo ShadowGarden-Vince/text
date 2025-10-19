@@ -15,8 +15,8 @@ body{
     align-items: center;
 }
 .box{
-    width: 85%;
-    height: 85%;
+    width: 85%; /* 保持百分比（相对父元素） */
+    height: 85%; /* 保持百分比 */
     background: linear-gradient(135deg,
     rgba(87,194,255,0.5) 0%,
     rgba(247,112,184,0.5) 50%,
@@ -24,57 +24,51 @@ body{
     );
     background-size: 200% 200%;
     animation: shine 3s infinite linear;
-    border-radius: 12px;
+    border-radius: 1.2rem; /* 12px → 1.2rem */
     position: relative;
     overflow: hidden;
-    box-shadow: inset 0 0 15px rgb(255,255,255);
+    box-shadow: inset 0 0 1.5rem rgb(255,255,255); /* 15px → 1.5rem */
 }
 @keyframes shine{
-    0%{
-        background-position: 0% 0%;
-    }
-    50%{
-        background-position: 100% 100%;
-    }
-    100%{
-        background-position: 0% 0%;
-    }
+    0%{ background-position: 0% 0%; }
+    50%{ background-position: 100% 100%; }
+    100%{ background-position: 0% 0%; }
 }
 .container{
     position: absolute;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    padding: 0 3%;
+    padding: 0 3%; /* 保持百分比 */
     display: flex;
-    gap: 3%;
+    gap: 3%; /* 保持百分比 */
 }
 .container>div{
-    width: 29%;
+    width: 40%; /* 保持百分比 */
     background: rgba(255,255,255,.2);
-    height: 80%;
-    border-radius: 20px;
+    height: 80%; /* 保持百分比 */
+    border-radius: 2rem; /* 20px → 2rem */
     box-sizing: border-box;
-    padding: 20px;
-    padding-top: 30px;
-    box-shadow: inset 0 0 15px rgba(255,255,255,0.2);
+    padding: 2rem; /* 20px → 2rem */
+    padding-top: 3rem; /* 30px → 3rem */
+    box-shadow: inset 0 0 1.5rem rgba(255,255,255,0.2); /* 15px → 1.5rem */
 }
 .tit{
     color: #fff;
-    font-size: 24px;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
+    font-size: 2.4rem; /* 24px → 2.4rem */
+    letter-spacing: 0.2rem; /* 2px → 0.2rem */
+    margin-bottom: 2.5rem; /* 25px → 2.5rem */
     font-weight: bold;
 }
 .container>.left{
     height: auto;
-    min-height: 80%;
+    min-height: 80%; /* 保持百分比 */
 }
 .left>img, .right>img{
-    width: 100%;
-    max-width: 200px;
+    width: 100%; /* 保持百分比（相对父元素） */
+    max-width: 20rem; /* 200px → 20rem */
     height: auto;
 }
 .container>.right{
-    width: 40%;
+    width: 24%; /* 保持百分比 */
 }
