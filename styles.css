@@ -1,4 +1,9 @@
-/* 基础样式重置 */
+/* 基础样式1. 标题与左侧PERSONProfile标题等高对齐
+2. 成员列表每行显示2个
+3. 最后一位成员居中显示
+4. 名字在图片正下方
+*/
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +11,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 页面背景与动画 */
 body {
     background-color: #0a0514;
     background-image: 
@@ -18,7 +22,7 @@ body {
     overflow-x: hidden;
 }
 
-/* 浮动光效元素 */
+/* 浮动光效背景 */
 body::before, body::after {
     content: '';
     position: fixed;
@@ -31,30 +35,21 @@ body::before, body::after {
     animation: float 20s infinite ease-in-out;
 }
 
-body::before {
-    top: -100px;
-    left: -100px;
-}
-
-body::after {
-    bottom: -100px;
-    right: -100px;
-    animation-delay: 10s;
-}
+body::before { top: -100px; left: -100px; }
+body::after { bottom: -100px; right: -100px; animation-delay: 10s; }
 
 @keyframes float {
     0%, 100% { transform: translate(0, 0) scale(1); }
     50% { transform: translate(30px, 30px) scale(1.1); }
 }
 
-/* 标题动画与特效 */
+/* 主标题动画 */
 h1 {
     color: #e6e6fa;
     text-align: center;
     margin: 1rem 0;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    position: relative;
     text-shadow: 
         0 0 10px rgba(171, 71, 255, 0.5),
         0 0 20px rgba(171, 71, 255, 0.3);
@@ -67,28 +62,19 @@ h1:nth-child(2) { animation-delay: 0.6s; }
 h1:nth-child(3) { animation-delay: 0.9s; }
 
 @keyframes fadeIn {
-    from { 
-        opacity: 0;
-        transform: translateY(20px);
-        text-shadow: none;
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); text-shadow: none; }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* 标题悬停特效 */
 h1:hover {
     color: #d8bfd8;
     text-shadow: 
         0 0 15px rgba(171, 71, 255, 0.7),
-        0 0 30px rgba(171, 71, 255, 0.5),
-        0 0 45px rgba(171, 71, 255, 0.3);
+        0 0 30px rgba(171, 71, 255, 0.5);
     transition: all 0.5s ease;
 }
 
-/* 容器样式与动画 */
+/* 容器布局 - 关键调整 */
 .box {
     max-width: 1200px;
     margin: 3rem auto;
@@ -110,68 +96,48 @@ h1:hover {
 }
 
 @keyframes slideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .flexsb {
     display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+    gap: 3rem; /* 左右区域间距 */
     padding: 2rem;
 }
 
-/* 左侧个人资料 */
+/* 左侧个人资料区 */
 .left {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 1rem;
 }
 
-/* 右侧成员列表 - 核心调整部分 */
+/* 右侧成员列表区 - 核心布局 */
 .right {
-    flex: 2;
-    padding: 1rem;
+    flex: 1; /* 与左侧保持差不多宽度 */
     display: flex;
     flex-direction: column;
-    align-items: center; /* 让成员列表整体居中 */
 }
 
-/* 成员列表容器 */
-.members-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 1.5rem;
-    width: 100%; /* 占满右侧宽度 */
-    margin-top: 1.5rem; /* 与标题保持距离 */
-}
-
-/* 单个成员项容器 - 垂直排列：名称在上，图片在下 */
-.member-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem; /* 名称和图片之间的间距 */
-}
-
-/* 标题样式 */
+/* 标题等高对齐关键样式 */
 .tit {
     font-size: 1.6rem;
     color: #ba55d3;
     margin-bottom: 1.5rem;
     padding-bottom: 0.8rem;
     border-bottom: 2px solid rgba(186, 85, 211, 0.3);
-    width: 100%;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.25em;
     position: relative;
     font-weight: 600;
+    /* 确保两个标题高度一致 */
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tit::after {
@@ -182,10 +148,7 @@ h1:hover {
     transform: translateX(-50%);
     width: 40%;
     height: 2px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(186, 85, 211, 0.8), 
-        transparent);
+    background: linear-gradient(90deg, transparent, rgba(186, 85, 211, 0.8), transparent);
     animation: shine 3s infinite;
 }
 
@@ -194,12 +157,34 @@ h1:hover {
     50% { width: 60%; }
 }
 
-/* 图片样式与动画 */
+/* 成员网格布局 - 每行2个，最后一个居中 */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 固定2列 */
+    gap: 2rem; /* 成员间距 */
+    justify-items: center; /* 水平居中 */
+}
+
+/* 最后一个成员单独居中 */
+.members-grid .member-item:last-child {
+    grid-column: 1 / -1; /* 跨两列 */
+    justify-self: center; /* 自身居中 */
+}
+
+/* 单个成员容器 - 图片在上，名字在下 */
+.member-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 200px; /* 限制最大宽度 */
+}
+
+/* 图片样式 */
 img {
     border-radius: 8px;
     border: 2px solid rgba(147, 112, 219, 0.5);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    max-width: 100%;
     position: relative;
     overflow: hidden;
 }
@@ -211,12 +196,7 @@ img::before {
     left: -100%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.1),
-        transparent
-    );
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     animation: shineEffect 3s infinite;
 }
 
@@ -232,20 +212,19 @@ img::before {
     box-shadow: 0 0 20px rgba(147, 112, 219, 0.4);
 }
 
-/* 成员图片样式 */
 .member-item img {
-    width: 120px;
-    height: 160px;
+    width: 100%;
+    height: 200px; /* 固定图片高度 */
     object-fit: cover;
 }
 
 img:hover {
-    transform: scale(1.08) translateY(-5px);
+    transform: scale(1.05) translateY(-5px);
     box-shadow: 0 0 30px rgba(186, 85, 211, 0.7);
     border-color: rgba(186, 85, 211, 0.8);
 }
 
-/* 文本样式与特效 */
+/* 文本样式 */
 .left-text {
     line-height: 2;
     font-size: 1.1rem;
@@ -255,7 +234,7 @@ img:hover {
     border-radius: 8px;
     width: 100%;
     border: 1px solid rgba(171, 71, 255, 0.1);
-    position: relative;
+    margin-top: 1rem;
 }
 
 .left-text p {
@@ -273,14 +252,8 @@ img:hover {
 .left-text p:nth-child(6) { animation-delay: 2.0s; }
 
 @keyframes textReveal {
-    from {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 .left-text p::before {
@@ -291,34 +264,22 @@ img:hover {
     text-shadow: 0 0 5px rgba(186, 85, 211, 0.7);
 }
 
-/* 成员名称样式（现在位于图片上方） */
+/* 成员名字样式（图片正下方） */
 .member-name {
     text-align: center;
-    color: #ba55d3; /* 上方名称用更醒目的颜色 */
-    font-weight: 600;
-    text-shadow: 0 0 5px rgba(186, 85, 211, 0.4);
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-/* 保持原有人名在图片下方（如果需要） */
-/* 如果只需要一个名称，可删除此段并调整HTML */
-.member-caption {
-    text-align: center;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     color: #d8bfd8;
     font-weight: 500;
     text-shadow: 0 0 5px rgba(147, 112, 219, 0.3);
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
 }
 
 .member-item:hover .member-name {
-    color: #d8bfd8;
-    text-shadow: 0 0 10px rgba(186, 85, 211, 0.7);
-    transform: scale(1.1);
+    color: #ba55d3;
+    text-shadow: 0 0 10px rgba(186, 85, 211, 0.6);
+    transform: scale(1.05);
 }
 
 /* 响应式调整 */
@@ -328,10 +289,18 @@ img:hover {
     }
     
     .members-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr; /* 手机端单列 */
+    }
+    
+    .members-grid .member-item:last-child {
+        grid-column: auto; /* 取消跨列 */
     }
     
     h1 {
+        font-size: 1.3rem;
+    }
+    
+    .tit {
         font-size: 1.3rem;
     }
 }
