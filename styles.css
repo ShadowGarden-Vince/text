@@ -1,3 +1,7 @@
+body{
+    background: url('img/bg3.jpg') no-repeat;
+    background-size: 100% auto;
+}
 .box{
     display:flex;
     justify-content: space-between;
