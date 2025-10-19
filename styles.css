@@ -6,18 +6,18 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 关键修改：添加动态背景容器 */
+/* 动态背景容器 */
 .background-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -2; /* 置于最底层 */
+    z-index: -2;
     overflow: hidden;
 }
 
-/* 动态打斗场景视频/动画容器 */
+/* 动态打斗场景视频 */
 .fight-scene {
     position: absolute;
     top: 0;
@@ -25,15 +25,15 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.35; /* 适度提高透明度，更清晰但不刺眼 */
+    opacity: 0.35;
     filter: 
-        sepia(20%) /* 降低色调偏移，保留更多原始细节 */
-        hue-rotate(270deg) /* 维持暗紫色调 */
-        contrast(1.2) /* 提高对比度，让视频细节更清晰 */
-        brightness(0.8); /* 降低亮度，避免过曝 */
+        sepia(20%) 
+        hue-rotate(270deg) 
+        contrast(1.2) 
+        brightness(0.8);
 }
 
-/* 调整遮罩层透明度，减少对视频的遮挡 */
+/* 遮罩层 */
 body::before {
     content: '';
     position: fixed;
@@ -43,8 +43,8 @@ body::before {
     height: 100%;
     background: linear-gradient(
         to bottom,
-        rgba(10, 5, 20, 0.85), /* 降低顶部遮罩透明度 */
-        rgba(10, 5, 20, 0.8),  /* 中间更通透 */
+        rgba(10, 5, 20, 0.85),
+        rgba(10, 5, 20, 0.8),
         rgba(10, 5, 20, 0.85)
     );
     z-index: -1;
@@ -59,7 +59,7 @@ body {
     min-height: 100vh;
     padding: 2rem 0;
     overflow-x: hidden;
-    position: relative; /* 确保z-index生效 */
+    position: relative;
 }
 
 /* 浮动光效背景 */
@@ -78,7 +78,6 @@ body::after {
     animation-delay: 10s;
 }
 
-/* 保留原浮动光效的一个元素 */
 .extra-glow {
     position: fixed;
     width: 400px;
@@ -109,7 +108,7 @@ h1 {
         0 0 20px rgba(171, 71, 255, 0.3);
     animation: fadeIn 1.5s ease-out forwards;
     opacity: 0;
-    position: relative; /* 确保显示在背景之上 */
+    position: relative;
 }
 
 h1:nth-child(1) { animation-delay: 0.3s; }
@@ -129,7 +128,7 @@ h1:hover {
     transition: all 0.5s ease;
 }
 
-/* 容器布局 - 关键调整：增强不透明度确保内容清晰 */
+/* 容器布局 */
 .box {
     max-width: 1200px;
     margin: 3rem auto;
@@ -138,14 +137,14 @@ h1:hover {
 }
 
 .container {
-    background-color: rgba(10, 5, 20, 0.9); /* 提高不透明度 */
+    background-color: rgba(10, 5, 20, 0.9);
     border: 1px solid rgba(171, 71, 255, 0.3);
     border-radius: 12px;
     box-shadow: 
         0 0 30px rgba(75, 0, 130, 0.3),
         inset 0 0 20px rgba(171, 71, 255, 0.2);
     overflow: hidden;
-    backdrop-filter: blur(15px); /* 增强模糊效果 */
+    backdrop-filter: blur(15px);
     animation: slideUp 1s ease-out 1.2s forwards;
     opacity: 0;
     transform: translateY(30px);
@@ -234,14 +233,14 @@ h1:hover {
     max-width: 200px;
 }
 
-/* 图片样式 - 增强边框和阴影确保不被背景干扰 */
+/* 图片样式 */
 img {
     border-radius: 8px;
     border: 2px solid rgba(147, 112, 219, 0.7);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
-    z-index: 1; /* 确保图片在容器之上 */
+    z-index: 1;
 }
 
 img::before {
@@ -280,7 +279,7 @@ img:hover {
     border-color: rgba(186, 85, 211, 0.9);
 }
 
-/* 文本样式 - 增强对比度 */
+/* 文本样式 */
 .left-text {
     line-height: 2;
     font-size: 1.1rem;
@@ -340,38 +339,69 @@ img:hover {
     transform: scale(1.05);
 }
 
-/* 左下角元素 - 经典台词 */
+/* 左下角台词样式（核心修改） */
 .shadow-quote {
     position: fixed;
-    bottom: 6rem;
-    left: 1rem;
-    font-size: 1.2rem;
-    color: #ba55d3;
-    opacity: 0.4;
-    text-shadow: 0 0 5px rgba(186, 85, 211, 0.3);
-    transform: rotate(-90deg) translateX(-100%); /* 竖排效果 */
-    transform-origin: top left;
-    letter-spacing: 0.2em;
+    bottom: 5rem;
+    left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 0;
 }
 
-/* 魔法粒子效果 */
+/* 中文台词 */
+.quote-chinese {
+    font-size: 1.4rem;
+    color: #ba55d3;
+    opacity: 0.5;
+    text-shadow: 0 0 8px rgba(186, 85, 211, 0.5);
+    letter-spacing: 0.1em;
+    transform: rotate(-90deg) translateX(-30%);
+    transform-origin: bottom left;
+    margin-bottom: 20px;
+    animation: quotePulse 4s infinite alternate;
+}
+
+/* 英文台词 */
+.quote-english {
+    font-size: 1rem;
+    color: #d8bfd8;
+    opacity: 0.4;
+    text-shadow: 0 0 5px rgba(147, 112, 219, 0.3);
+    letter-spacing: 0.2em;
+    transform: rotate(-90deg) translateX(30%);
+    transform-origin: top left;
+    animation: quotePulse 4s 1s infinite alternate;
+}
+
+/* 台词呼吸动画 */
+@keyframes quotePulse {
+    from { 
+        opacity: 0.4;
+        text-shadow: 0 0 5px rgba(186, 85, 211, 0.3);
+    }
+    to { 
+        opacity: 0.7;
+        text-shadow: 0 0 15px rgba(186, 85, 211, 0.7);
+    }
+}
+
+/* 魔法粒子效果（增强版） */
 .magic-particles {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 200px;
-    height: 300px;
-    pointer-events: none; /* 不影响点击 */
+    width: 250px;
+    height: 400px;
+    pointer-events: none;
     z-index: 0;
 }
 
-/* 多个粒子效果 */
+/* 多个粒子随机动画 */
 .magic-particles::before,
 .magic-particles::after,
-.magic-particles span:nth-child(1),
-.magic-particles span:nth-child(2),
-.magic-particles span:nth-child(3) {
+.magic-particles span {
     content: '';
     position: absolute;
     border-radius: 50%;
@@ -379,6 +409,7 @@ img:hover {
     animation: floatUp 15s infinite linear;
 }
 
+/* 粒子大小和位置随机化 */
 .magic-particles::before {
     width: 5px;
     height: 5px;
@@ -419,10 +450,39 @@ img:hover {
     animation-delay: 12s;
 }
 
+.magic-particles span:nth-child(4) {
+    width: 8px;
+    height: 8px;
+    bottom: 300px;
+    left: 100px;
+    animation-delay: 4s;
+}
+
+.magic-particles span:nth-child(5) {
+    width: 2px;
+    height: 2px;
+    bottom: 250px;
+    left: 200px;
+    animation-delay: 7s;
+}
+
+/* 粒子上升动画 */
 @keyframes floatUp {
-    from { transform: translate(0, 0); opacity: 0; }
-    20% { opacity: 0.5; }
-    to { transform: translate(50px, -300px); opacity: 0; }
+    from { 
+        transform: translate(0, 0) rotate(0deg); 
+        opacity: 0;
+    }
+    20% { 
+        opacity: 0.6;
+        box-shadow: 0 0 10px rgba(186, 85, 211, 0.5);
+    }
+    80% { 
+        opacity: 0.4;
+    }
+    to { 
+        transform: translate(80px, -400px) rotate(180deg); 
+        opacity: 0;
+    }
 }
 
 /* 响应式调整 */
@@ -448,14 +508,16 @@ img:hover {
     }
 
     /* 响应式调整左下角元素 */
-    .shadow-badge {
-        width: 60px;
-        bottom: 1rem;
-        left: 1rem;
+    .quote-chinese {
+        font-size: 1.2rem;
+    }
+    
+    .quote-english {
+        font-size: 0.9rem;
     }
 
-    .shadow-quote {
-        font-size: 1rem;
-        bottom: 4rem;
+    .magic-particles {
+        width: 200px;
+        height: 300px;
     }
 }
