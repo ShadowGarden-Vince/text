@@ -67,14 +67,14 @@ body{
 .container>.left{
     height: auto;
 }
-.left>image{
+.left>img{
     width: 200px;
     height: 200px;
 }
 .container>.right{
     width: 28%;
 }
-.right>image{
+.right>img{
     width: 200px;
     height: 200px;
 }
